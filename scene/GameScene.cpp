@@ -6,7 +6,8 @@ using namespace DirectX;
 
 GameScene::GameScene() {}
 
-GameScene::~GameScene() {}
+GameScene::~GameScene() {
+}
 
 void GameScene::Initialize() {
 
@@ -16,7 +17,11 @@ void GameScene::Initialize() {
 	debugText_ = DebugText::GetInstance();
 }
 
-void GameScene::Update() {}
+void GameScene::Update() { 
+	
+
+
+}
 
 void GameScene::Draw() {
 
@@ -44,7 +49,7 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
-
+	
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();
 #pragma endregion
@@ -56,6 +61,8 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
+	
+
 
 	// デバッグテキストの描画
 	debugText_->DrawAll(commandList);
