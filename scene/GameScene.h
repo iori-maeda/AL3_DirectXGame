@@ -51,4 +51,15 @@ class GameScene {
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>
+	
+	//ワールドトランスフォーム
+	WorldTransform worldTransform_[100];
+	//テクスチャハンドル
+	uint32_t textureHandle_ = 0;
+	//3Dモデル生成
+	Model* model_ = nullptr;
+	//ワールドビュープロジェクション
+	ViewProjection viewProjection_;
+	//カメラ上方向の角度
+	float viewAngle = 0.0f;
 };
