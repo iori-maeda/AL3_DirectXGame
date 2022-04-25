@@ -51,4 +51,16 @@ class GameScene {
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>
+	
+	//テクスチャハンドル
+	uint32_t textureHandle_ = 0;
+
+
+	//ワールドトランスフォーム
+	WorldTransform worldTransform_[100];
+	//ビュープロジェクション
+	ViewProjection viewProjection_;
+	//3Dモデル
+	Model* model_ = nullptr;
+
 };
