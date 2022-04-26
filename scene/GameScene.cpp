@@ -6,7 +6,7 @@ using namespace DirectX;
 
 GameScene::GameScene() {}
 
-GameScene::~GameScene() {}
+GameScene::~GameScene() { delete model_; }
 
 void GameScene::Initialize() {
 
@@ -14,6 +14,32 @@ void GameScene::Initialize() {
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
 	debugText_ = DebugText::GetInstance();
+
+	// ファイル名を指定してテクスチャを読み込む
+	textureHandle_ = TextureManager::Load("mario.jpg");
+	// 3Dモデル生成
+	model_ = Model::Create();
+	// 視点座標設定
+	viewProjection_.eye = {0.0f, 0.0f, 50.0f};
+	// ビュープロジェクションの初期化
+	viewProjection_.Initialize();
+	
+	for (int i = 0; i < _countof(worldTransform_); ++i) {
+		for (int j = 0; j < _countof(*worldTransform_); ++j) {
+
+			// スケールの設定
+			worldTransform_[i][j].scale_ = {1.0f, 1.0f, 1.0f};
+
+			// 座標設定
+			worldTransform_[i][j].translation_ = {
+			  ((float)j - 4) * 4.0f, ((float)i - 4) * 4.0f, 0.0f};
+			if (i % 2 == 1 && j % 2 == 1) {
+				worldTransform_[i][j].scale_ = {0.0f, 0.0f, 0.0f};
+			}
+			// ワールドトランスフォームの初期化
+			worldTransform_[i][j].Initialize();
+		}
+	}
 }
 
 void GameScene::Update() {}
@@ -44,6 +70,13 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
+
+	//3Dモデル描画
+	for (int i = 0; i < _countof(worldTransform_); ++i) {
+		for (int j = 0; j < _countof(worldTransform_); ++j) {
+			model_->Draw(worldTransform_[i][j], viewProjection_, textureHandle_);
+		}
+	}
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();
