@@ -18,9 +18,12 @@ void GameScene::Initialize() {
 	textureHandle_ = TextureManager::Load("mario.jpg");
 	for (size_t i = 0; i < _countof(worldTransform_); ++i) {
 		// X,Y,Z  方向のスケーリングを設定
-		worldTransform_[i].scale_ = {1.0f, 1.0f, 1.0f};
+		worldTransform_[i].scale_ = {5.0f, 5.0f, 5.0f};
 		// X,Y,Z　軸周りの平行移動を設定
-		worldTransform_[i].translation_ = {(float)i * 2.0f, 0, 0};
+		worldTransform_[i].translation_ = {((float)i - 5.0f) * 10.0f, 20.0f, 0};
+		if (i > 9) {
+			worldTransform_[i].translation_ = {((float)i - 14.0f) * 10.0f, -20.0f, 0};		
+		}
 		//ワールドトランスフォームの初期化
 		worldTransform_[i].Initialize();
 	}
