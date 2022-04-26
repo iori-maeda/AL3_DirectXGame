@@ -125,8 +125,7 @@ void GameScene::Update() {
 	worldTransform_[PartId::LegL].UpdateMatrix();
 	worldTransform_[PartId::LegR].UpdateMatrix();
 
-	
-		// デバッグ用表示
+	// デバッグ用表示
 	debugText_->SetPos(50, 150);
 	debugText_->Printf(
 	  "Root:(%f,%f,%f)", worldTransform_[PartId::Root].translation_.x,
@@ -136,13 +135,11 @@ void GameScene::Update() {
 	debugText_->Printf(
 	  "eye:(%f,%f,%f)", viewProjection_.eye.x, viewProjection_.eye.y, viewProjection_.eye.z);
 
-	
 	debugText_->SetPos(50, 70);
 	debugText_->Printf(
 	  "target:(%f,%f,%f)", viewProjection_.target.x, viewProjection_.target.y,
 	  viewProjection_.target.z);
 
-	
 	debugText_->SetPos(50, 90);
 	debugText_->Printf(
 	  "up:(%f,%f,%f)", viewProjection_.up.x, viewProjection_.up.y, viewProjection_.up.z);
@@ -180,8 +177,8 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
-	//model_->Draw(worldTransform_[PartId::Root], viewProjection_, textureHandle_);
-	//model_->Draw(worldTransform_[PartId::Spine], viewProjection_, textureHandle_);
+	// model_->Draw(worldTransform_[PartId::Root], viewProjection_, textureHandle_);
+	// model_->Draw(worldTransform_[PartId::Spine], viewProjection_, textureHandle_);
 	model_->Draw(worldTransform_[PartId::Chest], viewProjection_, textureHandle_);
 	model_->Draw(worldTransform_[PartId::Head], viewProjection_, textureHandle_);
 	model_->Draw(worldTransform_[PartId::ArmL], viewProjection_, textureHandle_);
@@ -189,7 +186,6 @@ void GameScene::Draw() {
 	model_->Draw(worldTransform_[PartId::Hip], viewProjection_, textureHandle_);
 	model_->Draw(worldTransform_[PartId::LegL], viewProjection_, textureHandle_);
 	model_->Draw(worldTransform_[PartId::LegR], viewProjection_, textureHandle_);
-
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();
