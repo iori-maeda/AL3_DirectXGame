@@ -54,13 +54,25 @@ class GameScene {
 	
 	//テクスチャハンドル
 	uint32_t textureHandle_ = 0;
-
-
-	//ワールドトランスフォーム
-	WorldTransform worldTransform_[100];
-	//ビュープロジェクション
-	ViewProjection viewProjection_;
 	//3Dモデル
 	Model* model_ = nullptr;
+	//ビュープロジェクション
+	ViewProjection viewProjection_;
+	//ワールドトランスフォーム
+	WorldTransform worldTransform_[100];
+
+	public:
+		//パーツID
+	  enum PartId { 
+		  Root,		// 大元
+		  Spine,	// 脊椎
+		  Chest,	// 胸
+		  Head,		// 頭
+		  ArmL,		// 左腕
+		  ArmR,		// 右腕
+		  Hip,		// 尻
+		  LegL,		// 左足
+		  LegR,		// 右足
+	  };
 
 };
